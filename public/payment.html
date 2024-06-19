@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NACOS DUES - Payments</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .button {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            margin: 0; /* Removed margin to fit within container */
+            text-align: center;
+            background-color: #2F855A; /* Main green color */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: #276749; /* Darker green on hover */
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            padding: 20px;
+        }
+
+        .content-box {
+            background: rgba(47, 133, 90, 0.9); /* Green with some transparency */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            color: white; /* Text color */
+        }
+
+        .span-box {
+            grid-column: span 2;
+        }
+
+        ul.payment-instructions {
+            list-style-type: disc;
+            padding-left: 20px; /* Add padding for better alignment */
+            text-align: left; /* Align text to the left */
+        }
+
+        ul.payment-instructions li {
+            margin-bottom: 10px; /* Space between list items */
+        }
+
+        /* Responsive layout - when the screen is less than 600px wide, make the sidebar full-width */
+        @media screen and (max-width: 600px) {
+            .grid-container {
+                grid-template-columns: 1fr;
+            }
+            .span-box {
+                grid-column: span 1;
+            }
+        }
+    </style>
+</head>
+<body onclick="closeSidebar(event)">
+    <button id="sidebar-toggle-button" class="sidebar-button" onclick="toggleSidebar(event)">☰</button>
+    <div id="sidebar" class="sidebar">
+        <div class="sidebar-content">
+            <a href="#Registration">Services</a>
+            <a href="payment.html"><button class="buttons">Payment</button></a>
+            <a href="#Updates & News">Clients</a>
+            <a href="#contact">Contact</a>
+            <button class="buttons">About</button>
+        </div>
+    </div>
+    <header>
+        <h1>PAYMENTS</h1>
+    </header>
+    <div class="grid-container">
+        <div class="content-box">
+            <a href="generate_remita.html" class="button">Generate Remita for Payment</a>
+        </div>
+        <div class="content-box">
+            <button class="button" onclick="viewPendingPayments()">View Pending Payments</button>
+        </div>
+        <div class="content-box span-box">
+            <h2>Payment Instructions</h2>
+            <p>Follow these instructions to complete your payment:</p>
+            <ul class="payment-instructions">
+                <li>Click on 'Generate Remita for Payment' to generate your payment code.</li>
+                <li>Visit the nearest bank or use online banking to complete the payment.</li>
+                <li>Keep the payment receipt for future reference.</li>
+                <li>Click on 'View Pending Payments' to check the status of your payments.</li>
+            </ul>
+        </div>
+    </div>
+    <script>
+        function toggleSidebar(event) {
+            event.stopPropagation();
+            var sidebar = document.getElementById('sidebar');
+            if (sidebar.style.display === 'none' || sidebar.style.display === '') {
+                sidebar.style.display = 'block';
+            } else {
+                sidebar.style.display = 'none';
+            }
+        }
+
+        function closeSidebar(event) {
+            var sidebar = document.getElementById('sidebar');
+            if (event.target.closest('#sidebar') === null && event.target.closest('.sidebar-button') === null) {
+                sidebar.style.display = 'none';
+            }
+        }
+
+        function viewPendingPayments() {
+            alert('Redirecting to pending payments...');
+            // Example redirection:
+            // window.location.href = 'pending_payments.html';
+        }
+    </script>
+</body>
+</html>

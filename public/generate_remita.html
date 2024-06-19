@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Generate Remita</title>
+    <style>
+        .form-container {
+            width: 300px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #f9f9f9;
+        }
+
+        .form-field {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin: 20px 0;
+            text-align: center;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>Generate Remita for Payment</h1>
+    <div class="form-container">
+        <form id="remitaForm">
+            <input type="text" id="name" name="name" class="form-field" placeholder="Name" required>
+            <input type="text" id="mat_no" name="mat_no" class="form-field" placeholder="Mat No" required>
+            <input type="text" id="level" name="level" class="form-field" placeholder="Level" required>
+            <button type="button" class="button" onclick="generateRemita()">Generate Remita</button>
+        </form>
+    </div>
+
+    <script>
+        function generateRemita() {
+            const name = document.getElementById('name').value;
+            const matNo = document.getElementById('mat_no').value;
+            const level = document.getElementById('level').value;
+
+            if (name && matNo && level) {
+                // Redirect to remita_generated.html with the name as a query parameter
+                window.location.href = `remita_generated.html?name=${encodeURIComponent(name)}`;
+            } else {
+                alert('Please fill in all fields.');
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Payment Method</title>
+    <style>
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .payment-options {
+            margin: 20px 0;
+        }
+
+        .payment-option {
+            display: inline-block;
+            margin: 0 10px;
+            padding: 10px 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .payment-option:hover {
+            background-color: #f0f0f0;
+        }
+
+        .bank-details {
+            margin-top: 20px;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+
+        .bank-details p {
+            margin: 10px 0;
+        }
+
+        .red-text {
+            color: red;
+            font-size: 12px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            margin-top: 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Payment Method</h1>
+        <p id="message"></p>
+        <div class="payment-options">
+            <div class="payment-option" onclick="showBankDetails()">Bank Transfer</div>
+            <div class="payment-option">Pay with Card Details</div>
+        </div>
+        <div id="bank-details" class="bank-details" style="display: none;">
+            <p class="red-text">This is your one-time transfer account, please transfer in the next 10 mins as the Remita code will expire.</p>
+            <p>2006100290. Kuda Bank. Anagbogu Michael</p>
+            <button class="button" onclick="returnToHome()">Return to Home</button>
+        </div>
+    </div>
+
+    <script>
+        // Function to get URL parameters
+        function getUrlParameter(name) {
+            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+            const regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+            const results = regex.exec(location.search);
+            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+        }
+
+        // Get the name from URL parameters and display the message
+        const name = getUrlParameter('name');
+        document.getElementById('message').innerText = `Dear ${name}, please select your payment method.`;
+
+        // Function to show bank details
+        function showBankDetails() {
+            document.getElementById('bank-details').style.display = 'block';
+        }
+
+        // Function to return to home
+        function returnToHome() {
+            window.location.href = 'generate_remita.html';
+        }
+    </script>
+</body>
+</html>

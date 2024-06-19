@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Remita Generated</title>
+    <style>
+        .nacos-payment {
+            display: block;
+            width: 300px;
+            padding: 20px;
+            margin: 20px auto;
+            text-align: center;
+            background-color: #ddd;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 20px;
+        }
+
+        .button {
+            display: block;
+            width: 200px;
+            padding: 10px;
+            margin: 20px auto;
+            text-align: center;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>Remita Generated Successfully</h1>
+    <p id="message"></p>
+    <div class="nacos-payment">NACOS PAYMENT: ₦5,000</div>
+    <button class="button" onclick="goToNextPage()">Generate Remita</button>
+
+    <script>
+        // Function to get URL parameters
+        function getUrlParameter(name) {
+            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+            const regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+            const results = regex.exec(location.search);
+            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+        }
+
+        // Get the name from URL parameters and display the message
+        const name = getUrlParameter('name');
+        document.getElementById('message').innerText = `${name}, your Remita has been generated. Please proceed with the payment.`;
+
+        // Function to handle button click
+        function goToNextPage() {
+            // Redirect to the next page with the name parameter
+            window.location.href = `payment_method.html?name=${encodeURIComponent(name)}`;
+        }
+    </script>
+</body>
+</html>
